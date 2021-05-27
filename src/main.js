@@ -6,14 +6,15 @@ import {
 	Tabbar,
 	TabbarItem,
 	NavBar,
-	Button,
 	Swipe,
 	SwipeItem,
 	Grid,
 	GridItem,
 	Image as VanImage,
 	Tab,
-	Tabs
+	Tabs,
+	DropdownMenu,
+	DropdownItem
 } from 'vant'
 
 import 'amfe-flexible'
@@ -27,7 +28,6 @@ app.use(router)
 app.use(Tabbar)
 app.use(TabbarItem)
 app.use(NavBar)
-app.use(Button)
 app.use(Swipe)
 app.use(SwipeItem)
 app.use(Grid)
@@ -35,5 +35,7 @@ app.use(GridItem)
 app.use(VanImage)
 app.use(Tab)
 app.use(Tabs)
+app.use(DropdownMenu)
+app.use(DropdownItem)
 
 app.mount('#app')

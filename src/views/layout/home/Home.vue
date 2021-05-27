@@ -106,7 +106,7 @@ export default {
 	left: 0;
 	right: 0;
 	bottom: 100px;
-	overflow: hidden;
+	// overflow: hidden;
 }
 
 .grid-container {
