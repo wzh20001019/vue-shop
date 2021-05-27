@@ -25,4 +25,8 @@ export default {
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.van-tabbar {
+	background-color: #ddd;
+}
+</style>

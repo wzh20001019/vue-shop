@@ -2,7 +2,19 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { Tabbar, TabbarItem, NavBar, Button } from 'vant'
+import {
+	Tabbar,
+	TabbarItem,
+	NavBar,
+	Button,
+	Swipe,
+	SwipeItem,
+	Grid,
+	GridItem,
+	Image as VanImage,
+	Tab,
+	Tabs
+} from 'vant'
 
 import 'amfe-flexible'
 // import 'vant/lib/index.css' //导入css样式
@@ -16,5 +28,12 @@ app.use(Tabbar)
 app.use(TabbarItem)
 app.use(NavBar)
 app.use(Button)
+app.use(Swipe)
+app.use(SwipeItem)
+app.use(Grid)
+app.use(GridItem)
+app.use(VanImage)
+app.use(Tab)
+app.use(Tabs)
 
 app.mount('#app')
