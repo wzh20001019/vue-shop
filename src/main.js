@@ -13,8 +13,8 @@ import {
 	Image as VanImage,
 	Tab,
 	Tabs,
-	DropdownMenu,
-	DropdownItem
+	Sidebar,
+	SidebarItem
 } from 'vant'
 
 import 'amfe-flexible'
@@ -35,7 +35,7 @@ app.use(GridItem)
 app.use(VanImage)
 app.use(Tab)
 app.use(Tabs)
-app.use(DropdownMenu)
-app.use(DropdownItem)
+app.use(Sidebar)
+app.use(SidebarItem)
 
 app.mount('#app')

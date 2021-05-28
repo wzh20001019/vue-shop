@@ -1,5 +1,13 @@
 <template>
 	<router-view />
+
+	<!-- <router-view v-slot="{ Component }">
+		<transition>
+			<keep-alive clude="Home">
+				<component :is="Component" />
+			</keep-alive>
+		</transition>
+	</router-view> -->
 </template>
 
 <style lang="less">

@@ -1,6 +1,13 @@
 <template>
 	<section class="index-container">
-		<router-view />
+		<!-- <router-view /> -->
+		<router-view v-slot="{ Component }">
+			<transition>
+				<keep-alive clude="Home">
+					<component :is="Component" />
+				</keep-alive>
+			</transition>
+		</router-view>
 
 		<van-tabbar v-model="active" route>
 			<van-tabbar-item to="/" icon="wap-home-o">首页</van-tabbar-item>
