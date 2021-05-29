@@ -14,7 +14,13 @@ import {
 	Tab,
 	Tabs,
 	Sidebar,
-	SidebarItem
+	SidebarItem,
+	Tag,
+	Icon,
+	Card,
+	ActionBar,
+	ActionBarIcon,
+	ActionBarButton
 } from 'vant'
 
 import 'amfe-flexible'
@@ -37,5 +43,11 @@ app.use(Tab)
 app.use(Tabs)
 app.use(Sidebar)
 app.use(SidebarItem)
+app.use(Tag)
+app.use(Icon)
+app.use(Card)
+app.use(ActionBar)
+app.use(ActionBarIcon)
+app.use(ActionBarButton)
 
 app.mount('#app')

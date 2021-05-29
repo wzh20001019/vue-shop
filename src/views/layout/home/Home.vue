@@ -92,7 +92,6 @@ export default {
 	line-height: 350px;
 	height: 350px;
 	text-align: center;
-	background-color: #39a9ed;
 
 	img {
 		width: 100vw;

@@ -1,12 +1,15 @@
 <template>
+	<van-nav-bar title="Login" left-arrow @click-left="onClickLeft" />
 	<section>
-		123
+		login
 	</section>
 </template>
 
 <script>
+import navBarLeftBtn from '@/mixins/navbar-left-btn'
 export default {
-	name: 'Login'
+	name: 'Login',
+	mixins: [navBarLeftBtn]
 }
 </script>
 

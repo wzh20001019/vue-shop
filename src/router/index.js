@@ -5,26 +5,27 @@ const routes = [
 		path: '/',
 		name: 'LayoutIndex',
 		component: () => import('@/views/layout/index/Index.vue'),
+		title: '首页',
 
 		children: [
 			{
 				path: '',
-				name: 'Home',
+				name: '首页',
 				component: () => import('@/views/layout/home/Home.vue')
 			},
 			{
 				path: 'category',
-				name: 'Category',
+				name: '分类',
 				component: () => import('@/views/layout/category/Category.vue')
 			},
 			{
 				path: 'cart',
-				name: 'Cart',
+				name: '购物车',
 				component: () => import('@/views/layout/cart/Cart.vue')
 			},
 			{
 				path: 'my',
-				name: 'My',
+				name: '个人中心',
 				component: () => import('@/views/layout/my/My.vue')
 			}
 		]
@@ -45,5 +46,13 @@ const router = createRouter({
 	history: createWebHistory(process.env.BASE_URL),
 	routes
 })
+
+//即将进入目标路由之前
+router.beforeEach((to, from) => {
+	document.title = to.name //设置标题内容
+})
+
+//即将进入目标路由之后
+router.afterEach((to, from) => {})
 
 export default router
