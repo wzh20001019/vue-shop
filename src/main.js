@@ -20,7 +20,10 @@ import {
 	Card,
 	ActionBar,
 	ActionBarIcon,
-	ActionBarButton
+	ActionBarButton,
+	Form,
+	Field,
+	Button
 } from 'vant'
 
 import 'amfe-flexible'
@@ -49,5 +52,8 @@ app.use(Card)
 app.use(ActionBar)
 app.use(ActionBarIcon)
 app.use(ActionBarButton)
+app.use(Form)
+app.use(Field)
+app.use(Button)
 
 app.mount('#app')

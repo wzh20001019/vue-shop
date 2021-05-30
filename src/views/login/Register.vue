@@ -1,7 +1,17 @@
 <template>
-	<van-nav-bar title="登录" left-arrow @click-left="onClickLeft" />
-	<section class="login-container">
+	<van-nav-bar title="注册" left-arrow @click-left="onClickLeft" />
+	<section class="register-container">
 		<van-form @submit="onSubmit">
+			<van-field
+				v-model="state.name"
+				name="name"
+				label="昵称"
+				placeholder="昵称"
+				:rules="[
+					{ required: true, message: '请填写昵称' },
+					{ pattern: /^[\u4e00-\u9fa5]{2,5}$/, message: '请输入2-5位的昵称' }
+				]"
+			/>
 			<van-field
 				v-model="state.email"
 				name="email"
@@ -23,47 +33,60 @@
 					{ pattern: /^[a-zA-Z0-9_+@]{6,14}$/, message: '请输入6-14位密码' }
 				]"
 			/>
+			<van-field
+				v-model="state.password_confirmation"
+				type="password"
+				name="password_confirmation"
+				label="确认密码"
+				placeholder="确认密码"
+				:rules="[
+					{ required: true, message: '请确认密码' },
+					{ pattern: /^[a-zA-Z0-9_+@]{6,14}$/, message: '请输入6-14位密码' }
+				]"
+			/>
 			<div style="margin: 16px;">
 				<van-button round block type="primary" native-type="submit">
 					提交
 				</van-button>
 			</div>
 		</van-form>
-		<a href="javascript:;" @click="goRegister">暂无账号, 去注册</a>
+
+		<a href="javascript:;" @click="goLogin">已有账号, 去登录</a>
 	</section>
 </template>
 
 <script>
 import navBarLeftBtn from '@/mixins/navbar-left-btn'
 
-import { login } from '@/api/login'
+import { register } from '@/api/login'
 import { reactive } from 'vue'
-import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import { Toast } from 'vant'
-
 export default {
-	name: 'Login',
+	name: 'Register',
 	mixins: [navBarLeftBtn],
 
 	setup() {
 		const router = useRouter()
-		const store = useStore()
 
 		const state = reactive({
+			name: '',
 			email: '',
-			password: ''
+			password: '',
+			password_confirmation: ''
 		})
 		const onSubmit = values => {
-			login(state)
+			if (state.password !== state.password_confirmation) return Toast.fail('两次密码不一致')
+
+			register(state)
 				.then(res => {
-					if (res.status !== 200) return Toast.fail('邮箱或密码错误')
+					if (res.status !== 201) return Toast.fail('注册失败')
 
-					Toast.success('登陆成功')
-					store.commit('updateToken', res.data.access_token)
-
+					Toast.success('注册成功')
 					setTimeout(() => {
-						router.push('/my')
+						router.push({
+							path: '/login'
+						})
 					}, 1000)
 				})
 				.catch(err => {
@@ -71,23 +94,23 @@ export default {
 				})
 		}
 
-		const goRegister = () => {
+		const goLogin = () => {
 			router.push({
-				path: '/register'
+				path: '/login'
 			})
 		}
 
 		return {
 			state,
 			onSubmit,
-			goRegister
+			goLogin
 		}
 	}
 }
 </script>
 
 <style scoped lang="less">
-.login-container {
+.register-container {
 	position: absolute;
 	top: 90px;
 	left: 0;
