@@ -75,6 +75,7 @@
 <script>
 import navBarLeftBtn from '@/mixins/navbar-left-btn'
 import { getDetailAllData } from '@/api/detail'
+// import { addCart } from '../../api/cart'
 
 import { ref, reactive, toRefs, onMounted, computed } from 'vue'
 import { useStore } from 'vuex'
@@ -107,6 +108,8 @@ export default {
 					likeGoods.value = res.data.like_goods.splice(0, 5)
 
 					count = goods.content.collects_count
+
+					console.log(goods.content)
 				})
 				.catch(err => {
 					return Toast.fail('获取信息失败')
@@ -154,6 +157,21 @@ export default {
 					path: '/login'
 				})
 			}
+
+			let data = {
+				goods_id: goods.content.id,
+				num: 1
+			}
+
+			store.dispatch('addCarts', data)
+
+			// addCart(data)
+			// 	.then(res => {
+			// 		console.log(res)
+			// 	})
+			// 	.catch(err => {
+			// 		console.log(err.message)
+			// 	})
 			//...
 		}
 

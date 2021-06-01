@@ -44,6 +44,16 @@ const routes = [
 		path: '/detail',
 		name: '商品详情',
 		component: () => import('@/views/good-detail/good-detail.vue')
+	},
+	{
+		path: '/address',
+		name: '添加地址',
+		component: () => import('@/views/address/Address.vue')
+	},
+	{
+		path: '/:catchAll(.*)',
+		name: '错误页面',
+		component: () => import('@/views/404/404.vue')
 	}
 ]
 

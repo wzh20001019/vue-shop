@@ -23,7 +23,14 @@ import {
 	ActionBarButton,
 	Form,
 	Field,
-	Button
+	Button,
+	ContactCard,
+	AddressEdit,
+	SwipeCell,
+	Stepper,
+	Checkbox,
+	CheckboxGroup,
+	SubmitBar
 } from 'vant'
 
 import 'amfe-flexible'
@@ -55,5 +62,12 @@ app.use(ActionBarButton)
 app.use(Form)
 app.use(Field)
 app.use(Button)
+app.use(ContactCard)
+app.use(AddressEdit)
+app.use(SwipeCell)
+app.use(Stepper)
+app.use(Checkbox)
+app.use(CheckboxGroup)
+app.use(SubmitBar)
 
 app.mount('#app')
