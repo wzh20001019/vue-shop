@@ -12,7 +12,7 @@
 				</van-sidebar>
 			</div>
 			<div class="tab-box">
-				<van-tabs v-model:active="active2" @change="tabChange">
+				<van-tabs v-model:active="active2" @change="tabChange" title-active-color="#cc0000">
 					<van-tab v-for="(item, index) in tabList" :key="index" :title="item">
 						<div class="wrapper">
 							<div class="content">{{ ct }}</div>
@@ -125,6 +125,16 @@ export default {
 		justify-content: center;
 		padding: 200px 0;
 	}
+}
+
+.van-sidebar-item--select::before {
+	width: 4px;
+	height: 60%;
+}
+
+.van-sidebar-item--select,
+.van-sidebar-item--select:active {
+	color: #cc0000;
 }
 
 .van-sidebar {

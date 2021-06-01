@@ -4,7 +4,7 @@
 	<div class="wrapper">
 		<div class="content">
 			<div class="swipe-container">
-				<van-swipe class="my-swipe" :autoplay="3000" indicator-color="white" lazy-render>
+				<van-swipe class="my-swipe" :autoplay="3000" indicator-color="#55e7fc" lazy-render>
 					<van-swipe-item v-for="(item, index) in slidesList" :key="index">
 						<img :src="item.img_url" :alt="item.title" />
 					</van-swipe-item>
@@ -24,7 +24,14 @@
 			</section>
 
 			<section class="tab-container">
-				<van-tabs v-model:active="active" sticky offset-top="44px">
+				<van-tabs
+					v-model:active="active"
+					sticky
+					offset-top="44px"
+					background="#eee"
+					duration="0.5"
+					title-active-color="#cc0000"
+				>
 					<van-tab title="畅销">畅销书籍</van-tab>
 					<van-tab title="新书">新书书籍</van-tab>
 					<van-tab title="精选">精选书籍</van-tab>

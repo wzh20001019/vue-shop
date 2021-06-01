@@ -34,23 +34,23 @@
 
 		<div class="my-main-box">
 			<ul>
-				<li>
+				<li @click="order">
 					<span>我的订单</span>
 					<van-icon name="arrow" />
 				</li>
-				<li>
+				<li @click="afterSales">
 					<span>售后服务</span>
 					<van-icon name="arrow" />
 				</li>
-				<li>
+				<li @click="userAdministration">
 					<span>账号管理</span>
 					<van-icon name="arrow" />
 				</li>
-				<li>
+				<li @click="contact">
 					<span>联系客服</span>
 					<van-icon name="arrow" />
 				</li>
-				<li>
+				<li @click="about">
 					<span>关于我们</span>
 					<van-icon name="arrow" />
 				</li>
@@ -105,6 +105,7 @@ export default {
 						loginOut()
 							.then(res => {
 								store.commit('updateToken', '')
+								store.commit('updateAddress', '')
 							})
 							.catch(err => {
 								console.log(err.message)
@@ -120,11 +121,36 @@ export default {
 			router.push('/login')
 		}
 
+		const order = () => {
+			return Toast('我的订单')
+		}
+
+		const afterSales = () => {
+			return Toast('售后服务')
+		}
+
+		const userAdministration = () => {
+			return Toast('账号管理')
+		}
+
+		const contact = () => {
+			return Toast('联系客服')
+		}
+
+		const about = () => {
+			return Toast('关于我们')
+		}
+
 		return {
 			...toRefs(user),
 			outLogin,
 			store,
-			goLogin
+			goLogin,
+			order,
+			afterSales,
+			userAdministration,
+			contact,
+			about
 		}
 	}
 }

@@ -4,9 +4,7 @@
 	<section class="cart-container" v-if="cartList.length !== 0">
 		<div class="address-container">
 			<div class="address-show-box" v-if="Object.keys($store.state.address) == 0">
-				<van-button icon="plus" type="primary" round @click.native="$router.push('/address')"
-					>新增地址</van-button
-				>
+				<van-button icon="plus" type="primary" round @click.native="addRess">新增地址</van-button>
 			</div>
 
 			<div class="address-hide-box" v-else @click="$router.push('/address')">
@@ -22,8 +20,12 @@
 			</div>
 		</div>
 
-		<section class="cartList-box" v-if="total !== 0">
-			<van-swipe-cell v-for="(item, index) in cartList" :key="index">
+		<section class="cartList-box">
+			<van-swipe-cell
+				v-for="(item, index) in cartList"
+				:key="index"
+				v-show="cartList[index].title !== ''"
+			>
 				<van-checkbox
 					v-model="item.checked"
 					checked-color="#cc0000"
@@ -76,7 +78,7 @@
 import navBarLeftBtn from '@/mixins/navbar-left-btn'
 
 import { ref, watch, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { Toast } from 'vant'
 
@@ -87,7 +89,7 @@ export default {
 	mixins: [navBarLeftBtn],
 
 	setup() {
-		// const route = useRoute()
+		const router = useRouter()
 		const store = useStore()
 
 		let cartNum = ref([])
@@ -170,8 +172,22 @@ export default {
 			} else {
 				total.value = 0
 				count.value = 0
-
 				store.commit('updateCount', count.value)
+			}
+		}
+
+		const addRess = () => {
+			if (store.state.token == '') {
+				Toast('请先登录')
+				setTimeout(() => {
+					router.push({
+						path: '/my'
+					})
+				}, 1000)
+			} else {
+				router.push({
+					path: '/address'
+				})
 			}
 		}
 
@@ -194,13 +210,26 @@ export default {
 		}
 
 		const onSubmit = () => {
-			return Toast.fail('不能提交')
+			if (store.state.token == '') {
+				Toast('请先登录')
+				setTimeout(() => {
+					router.push({
+						path: '/my'
+					})
+				}, 1000)
+			} else if (Object.keys(store.state.address).length == 0) {
+				return Toast.fail('请填写地址')
+			} else {
+				return Toast.fail('不能提交')
+			}
 		}
 
 		const qxClick = () => {
 			cartList.value.forEach(item => {
 				item.checked = checked.value
 			})
+
+			cart()
 		}
 
 		const removeClick = index => {
@@ -214,6 +243,7 @@ export default {
 		}
 
 		return {
+			addRess,
 			cartList,
 			numChange,
 			checkedClick,
