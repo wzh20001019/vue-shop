@@ -65,7 +65,13 @@
 
 	<van-action-bar>
 		<van-action-bar-icon icon="chat-o" text="客服" color="#55e7fc" />
-		<van-action-bar-icon icon="cart-o" text="购物车" badge="5" color="#ee0a24" to="/cart" />
+		<van-action-bar-icon
+			icon="cart-o"
+			text="购物车"
+			:badge="$store.state.count"
+			color="#ee0a24"
+			to="/cart"
+		/>
 		<van-action-bar-icon icon="shop-o" text="店铺" color="#FF9900" />
 		<van-action-bar-button type="warning" text="加入购物车" @click="onClickButton" />
 		<van-action-bar-button type="danger" text="立即购买" />
@@ -108,8 +114,6 @@ export default {
 					likeGoods.value = res.data.like_goods.splice(0, 5)
 
 					count = goods.content.collects_count
-
-					console.log(goods.content)
 				})
 				.catch(err => {
 					return Toast.fail('获取信息失败')

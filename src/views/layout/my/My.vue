@@ -1,7 +1,7 @@
 <template>
 	<van-nav-bar title="商城" left-arrow @click-left="onClickLeft" />
 
-	<section class="my-container" v-if="store.state.token == ''">
+	<section class="my-container" v-if="$store.state.token == ''">
 		<div class="user-box">
 			<div class="img-box">
 				<img :src="info.avatar_url" alt="" />
