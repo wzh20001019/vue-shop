@@ -26,7 +26,7 @@ request.interceptors.response.use(
 		return results
 	},
 	error => {
-		Promise.reject(error)
+		return Promise.reject(error)
 	}
 )
 
