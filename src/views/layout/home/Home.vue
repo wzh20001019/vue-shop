@@ -18,7 +18,10 @@
 					:key="index"
 					@click.native="gridClick(item.id)"
 				>
-					<img :src="item.cover_url" :alt="item.description" />
+					<div class="img-box">
+						<!-- :alt="item.description" -->
+						<img :src="item.cover_url" />
+					</div>
 					<span>{{ item.title.replace(/《|》/g, '') }}</span>
 				</div>
 			</section>
@@ -130,9 +133,15 @@ export default {
 
 		animation: goodMove 0.4s linear;
 
-		img {
+		.img-box {
 			width: 120px;
-			height: auto;
+			height: 130px;
+
+			img {
+				width: 100%;
+				height: 100%;
+				font-size: 20px;
+			}
 		}
 
 		span {
